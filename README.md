@@ -2,6 +2,22 @@
 
 Zest is a small background program to automatically prevent your battery-less [Enphase]https://enphase.com/ solar system from exporting energy to the grid while your [Amber Electric](https://www.amber.com.au/) solar feed-in tariff is negative. This avoids the disappointment of being charged money due to your solar system exporting energy to the grid at a bad time!
 
+<!-- MarkdownTOC autolink=true -->
+
+- [How it works](#how-it-works)
+- [Setup](#setup)
+    - [System requirements](#system-requirements)
+    - [Dependencies](#dependencies)
+    - [Configuration](#configuration)
+        - [Amber token](#amber-token)
+        - [Amber site ID](#amber-site-id)
+        - [Envoy installer password](#envoy-installer-password)
+    - [Grid profile names](#grid-profile-names)
+- [Run the program](#run-the-program)
+
+<!-- /MarkdownTOC -->
+
+
 ## How it works
 
 Enphase devices are configured with a 'Grid Profile', which encompasses a whole lot of power parameters - including a limit of how much power you are permitted to export to the grid. As an example, I have an 8.2kW solar system, but in my area, the power distribution company (responsible for the power poles and wires), Jemena, impose a 5kW export limit. What this means is that even if there is enough sunshine to generate the full 8.2kW, if the power consumption of my home is not high enough, the system limits its generation capacity so that it never exports more than 5kW to the grid. It is this capability that can be utilised, to set the grid export limit to 0.
