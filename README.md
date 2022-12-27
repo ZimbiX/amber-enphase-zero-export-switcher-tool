@@ -94,6 +94,8 @@ The default installer password can be algorithmically generated from the Envoy's
 
 [Apparently, firmware version 7 replaces this method of authentication](https://support.enphase.com/s/question/0D53m00006ySLuRCAW/unimpressed-with-loss-of-local-api-connectivity-to-envoys?t=1672164431932) with a [token that has to be refreshed through a UI](https://enphase.com/download/iq-gateway-access-using-token-tech-brief) every six months. I haven't read much of the thread, but it sounds like you also lose access to realtime telemetry by upgrading, so I'll be trying to avoid that.
 
+Not that you need it for our configuration, but FYI, the credentials for the homeowner pages are: `envoy` / \[the last six digits of the Envoy serial... which is displayed on the unauthenticated homepage\]
+
 ### Grid profile names
 
 You can find these at: `http://your-envoy-ip/installer/setup/home#microinverters/status/profile`. Note that if you go to that URL directly, you'll be redirected to another page; just enter the URL again and it will then take you to the right one:
@@ -125,4 +127,18 @@ To start the program, open a terminal in the program's folder and run:
 
 ```
 ruby zest.rb
+```
+
+and let it go!
+
+```
+I -- Amber says exporting energy to the grid would currently earn me: 2.87317 c/kWh
+I -- Making HTTP request to set export limit to normal...
+I -- Request complete
+
+I -- Amber says exporting energy to the grid would currently earn me: 2.9334 c/kWh
+I -- Export limit is already set to normal
+
+I -- Amber says exporting energy to the grid would currently earn me: 2.9334 c/kWh
+I -- Export limit is already set to normal
 ```
