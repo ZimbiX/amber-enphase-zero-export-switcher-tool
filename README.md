@@ -14,6 +14,7 @@ Zest is a small background program to automatically prevent your battery-less [E
         - [Envoy installer password](#envoy-installer-password)
     - [Grid profile names](#grid-profile-names)
 - [Run the program](#run-the-program)
+- [Screenshots](#screenshots)
 
 <!-- /MarkdownTOC -->
 
@@ -142,3 +143,17 @@ I -- Export limit is already set to normal
 I -- Amber says exporting energy to the grid would currently earn me: 2.9334 c/kWh
 I -- Export limit is already set to normal
 ```
+
+## Screenshots
+
+Here's an example of the kind of negative feed-in prices I'm trying to avoid:
+
+![](doc/images/amber-negative-prices-live.png)
+
+Which can result in days like this:
+
+![](doc/images/amber-negative-prices-worst-day.png)
+
+Realtime sampled telemetry showing the effects of my profile switching experimentation:
+
+![](doc/images/gnuplot-switching-profiles-experimentation.png)
