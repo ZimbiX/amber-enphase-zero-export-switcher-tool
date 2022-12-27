@@ -103,7 +103,7 @@ Double-click on the profile name that's next to `id=` and copy it, e.g. `select2
 
 If you don't have a zero export grid profile selectable, contact Enphase or maybe your installer to request that they add one for you. I sent Enphase a message, and impressively, they'd added a copy of my grid profile with zero export within an hour.
 
-### Run the program
+## Run the program
 
 To start the program, open a terminal in the program's folder and run:
 
