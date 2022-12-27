@@ -1,6 +1,6 @@
-# Amber Enphase Zero Export Switcher Tool
+# Amber Enphase Zero Export Switcher Tool (Zest)
 
-This is a small background program to automatically prevent your battery-less [Enphase]https://enphase.com/ solar system from exporting energy to the grid while your [Amber Electric](https://www.amber.com.au/) solar feed-in tariff is negative. This avoids the disappointment of being charged money due to your solar system exporting energy to the grid at a bad time!
+Zest is a small background program to automatically prevent your battery-less [Enphase]https://enphase.com/ solar system from exporting energy to the grid while your [Amber Electric](https://www.amber.com.au/) solar feed-in tariff is negative. This avoids the disappointment of being charged money due to your solar system exporting energy to the grid at a bad time!
 
 ## How it works
 
