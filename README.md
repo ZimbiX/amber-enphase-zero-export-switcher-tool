@@ -17,6 +17,7 @@ Zest is a small background program to automatically prevent your battery-less [E
     - [Grid profile names](#grid-profile-names)
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
+- [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
 
 <!-- /MarkdownTOC -->
 
@@ -165,3 +166,28 @@ Realtime sampled telemetry showing the effects of my profile switching experimen
 Running a cURL command to switch grid profile:
 
 ![](doc/images/envoy-grid-profile-switching-curl.png)
+
+## Install on Linux as a systemd service
+
+If your computer is running a systemd-based Linux, and you've installed Ruby with rbenv, here's how to have the program start automatically on boot:
+
+- Clone the directory somewhere and enter it:
+
+    ```bash
+    git clone git@github.com:ZimbiX/amber-enphase-zero-export-switcher-tool.git
+    cd amber-enphase-zero-export-switcher-tool
+    ```
+- Add configuration in `.env`
+- Run the install script to add and start the `zest` systemd service:
+
+    ```bash
+    ./scripts/install
+    ```
+
+    This can be re-run after a `git pull` to update the installation.
+
+To see logs:
+
+```
+journalctl --user -u zest
+```

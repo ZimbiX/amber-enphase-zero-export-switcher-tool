@@ -1,0 +1,12 @@
+[Unit]
+Description=Amber Enphase Zero Export Switcher Tool (Zest)
+Documentation=https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rbenv exec ruby zest.rb
+WorkingDirectory=%h/.zest
+Restart=always
+RestartSec=1
+StartLimitInterval=0

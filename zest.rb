@@ -14,6 +14,8 @@ require 'zest/enphase/manager'
 
 logger = GreenLog::Logger.build(severity_threshold: ENV.fetch('ZEST_LOG_LEVEL'))
 
+STDOUT.sync = true
+
 amber_client = Zest::Amber::Client.new(
   logger:,
   site_id: ENV.fetch('ZEST_AMBER_SITE_ID'),
