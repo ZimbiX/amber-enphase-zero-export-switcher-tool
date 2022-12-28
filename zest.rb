@@ -34,6 +34,8 @@ enphase_manager = Zest::Enphase::Manager.new(
   envoy_grid_profile_name_zero_export: ENV.fetch('ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT'),
 )
 
+amber_poll_interval_seconds = Float(ENV.fetch('ZEST_AMBER_POLL_INTERVAL_SECONDS'))
+
 loop do
   begin
     if amber_client.costs_me_to_export?
@@ -45,5 +47,5 @@ loop do
     puts "Error: #{e}", e.backtrace
   end
   puts
-  sleep 5
+  sleep amber_poll_interval_seconds
 end
