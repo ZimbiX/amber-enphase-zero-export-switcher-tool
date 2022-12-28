@@ -160,3 +160,7 @@ Which can result in days like this:
 Realtime sampled telemetry showing the effects of my profile switching experimentation:
 
 ![](doc/images/gnuplot-switching-profiles-experimentation.png)
+
+Running a cURL command to switch grid profile:
+
+![](doc/images/envoy-grid-profile-switching-curl.png)
