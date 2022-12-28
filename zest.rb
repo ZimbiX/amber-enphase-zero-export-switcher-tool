@@ -22,6 +22,7 @@ amber_client = Zest::Amber::Client.new(
 
 enphase_client = Zest::Enphase::Client.new(
   logger:,
+  envoy_ip: ENV.fetch('ZEST_ENPHASE_ENVOY_IP'),
   envoy_installer_username: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME'),
   envoy_installer_password: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD'),
 )

@@ -5,8 +5,9 @@ require 'httpx'
 module Zest
   module Enphase
     class Client
-      def initialize(logger:, envoy_installer_username:, envoy_installer_password:)
+      def initialize(logger:, envoy_ip:, envoy_installer_username:, envoy_installer_password:)
         @logger = logger
+        @envoy_ip = envoy_ip
         @envoy_installer_username = envoy_installer_username
         @envoy_installer_password = envoy_installer_password
       end
@@ -21,7 +22,7 @@ module Zest
 
       private
 
-      attr_reader :logger, :envoy_installer_username, :envoy_installer_password
+      attr_reader :logger, :envoy_ip, :envoy_installer_username, :envoy_installer_password
 
       def http
         @http ||=
@@ -41,7 +42,7 @@ module Zest
       end
 
       def base_url
-        'http://10.99.2.13'
+        "http://#{envoy_ip}"
       end
     end
   end

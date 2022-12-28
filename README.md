@@ -65,6 +65,7 @@ ZEST_LOG_LEVEL=debug
 ZEST_AMBER_TOKEN=[your token from Amber]
 ZEST_AMBER_SITE_ID=[your site ID from Amber]
 
+ZEST_ENPHASE_ENVOY_IP=[IP address of your Envoy]
 ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
