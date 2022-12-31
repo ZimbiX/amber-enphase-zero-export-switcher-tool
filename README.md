@@ -4,6 +4,10 @@
 
 Zest is a small background program to automatically prevent your battery-less [Enphase](https://enphase.com/) solar system from exporting energy to the grid while your [Amber Electric](https://www.amber.com.au/) solar feed-in tariff is negative. This avoids the disappointment of being charged money due to your solar system exporting energy to the grid at a bad time!
 
+Example of the effect on a day where the feed-in price went negative:
+
+![](doc/images/resulting-usage-example-annotated.png)
+
 <!-- MarkdownTOC autolink=true -->
 
 - [How it works](#how-it-works)
