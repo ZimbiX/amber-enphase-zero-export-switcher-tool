@@ -8,6 +8,8 @@ Example of the effect on a day where the feed-in price went negative:
 
 ![](doc/images/resulting-usage-example-annotated.png)
 
+## Contents
+
 <!-- MarkdownTOC autolink=true -->
 
 - [How it works](#how-it-works)
