@@ -20,7 +20,7 @@ Example of the effect on a day where the feed-in price went negative:
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
         - [Envoy installer password](#envoy-installer-password)
-    - [Grid profile names](#grid-profile-names)
+        - [Grid profile names](#grid-profile-names)
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
@@ -108,7 +108,7 @@ The default installer password can be algorithmically generated from the Envoy's
 
 Not that you need it for our configuration, but FYI, the credentials for the homeowner pages are: `envoy` / \[the last six digits of the Envoy serial... which is displayed on the unauthenticated homepage\]
 
-### Grid profile names
+#### Grid profile names
 
 You can find these at: `http://your-envoy-ip/installer/setup/home#microinverters/status/profile`. Note that if you go to that URL directly, you'll be redirected to another page; just enter the URL again and it will then take you to the right one:
 
