@@ -13,11 +13,13 @@ module Zest
       end
 
       def set_current_grid_profile(name:)
-        http.put(set_grid_profile_url, json: { selected_profile: name })
+        response = http.put(set_grid_profile_url, json: { selected_profile: name })
+        response.raise_for_status
       end
 
       def installer_home
-        http.get(installer_home_url)
+        response =  http.get(installer_home_url)
+        response.raise_for_status
       end
 
       private

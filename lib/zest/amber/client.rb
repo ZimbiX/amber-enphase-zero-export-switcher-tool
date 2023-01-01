@@ -17,6 +17,7 @@ module Zest
       # A negative price means you are earning
       def current_prices(resolution: 30)
         response = http.get("#{site_url}/prices/current", params: { resolution: })
+        response.raise_for_status
         prices_data = JSON.parse(response.body.to_s)
         price_data_by_channel = prices_data.map { |price_data| [price_data.fetch('channelType'), price_data] }.to_h
         import_price_data = price_data_by_channel.fetch('general')
