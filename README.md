@@ -57,7 +57,7 @@ This may work with different Enphase systems, but here's what I have:
 
 ### Dependencies
 
-- [Install Ruby 3](https://www.ruby-lang.org/en/downloads/)
+- [Install Ruby](https://www.ruby-lang.org/en/downloads/) (needs 3.1+)
 - [Download the contents of this repository](https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool/archive/refs/heads/master.zip)
 - Install the gems using Bundler:
     + Open a terminal within the program's folder and run `bundle`
