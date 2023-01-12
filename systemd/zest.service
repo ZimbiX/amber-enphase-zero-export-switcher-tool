@@ -1,7 +1,9 @@
 [Unit]
 Description=Amber Enphase Zero Export Switcher Tool (Zest)
 Documentation=https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool
-PartOf=graphical-session.target
+
+[Install]
+WantedBy=default.target
 
 [Service]
 Type=simple
