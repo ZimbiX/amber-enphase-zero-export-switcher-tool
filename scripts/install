@@ -6,7 +6,7 @@ cd "$(dirname "$0")"/..
 
 set -x
 
-ln -sf "$PWD" ~/.zest
+[[ -d ~/.zest ]] || ln -s "$PWD" ~/.zest
 mkdir -p ~/.config/systemd/user/
 cp -f systemd/zest.service ~/.config/systemd/user/
 
