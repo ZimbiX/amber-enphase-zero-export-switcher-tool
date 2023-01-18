@@ -7,9 +7,22 @@ cd "$(dirname "$0")"/..
 set -x
 
 [[ -d ~/.zest ]] || ln -s "$PWD" ~/.zest
-mkdir -p ~/.config/systemd/user/
-cp -f systemd/zest.service ~/.config/systemd/user/
 
-systemctl enable --user zest
-systemctl restart --user zest
-systemctl status --user zest
+mkdir -p ~/.config/systemd/user/
+
+install-service() {
+  local service_name
+  service_name="$1"
+
+  cp -f "systemd/$service_name.service" ~/.config/systemd/user/
+
+  systemctl enable --user "$service_name"
+  systemctl restart --user "$service_name"
+  systemctl status --user "$service_name" --no-pager
+}
+
+install-service zest
+
+if [[ "${1-}" == "--telemetry" ]]; then
+  install-service envoy-telemetry-collector
+fi

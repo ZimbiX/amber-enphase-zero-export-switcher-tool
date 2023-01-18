@@ -24,6 +24,7 @@ Example of the effect on a day where the feed-in price went negative:
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
+- [Collect and graph power telemetry from Envoy](#collect-and-graph-power-telemetry-from-envoy)
 
 <!-- /MarkdownTOC -->
 
@@ -197,3 +198,19 @@ To see logs:
 ```
 journalctl --user -u zest
 ```
+
+## Collect and graph power telemetry from Envoy
+
+I should get Home Assistant and Grafana set up at some point, but I've been using a gnuplot-based system for a while and thought I might as well share it.
+
+To start collecting telemetry, run:
+
+```bash
+./telemetry/envoy-telemetry-collector.sh
+```
+
+Or peform the above systemd service installation with `./scripts/install --telemetry` to also install a service for the telemetry collection script.
+
+Telemetry will be collected to `~/envoy.csv`. Note that this collects instantaneous power readings (W), so the data cannot accurately be used to calculate energy (Wh).
+
+To graph recent telemetry, install [gnuplot](http://www.gnuplot.info/) and see the comments at the top of the [gnuplot script](telemetry/envoy.gnuplot) for its usage.

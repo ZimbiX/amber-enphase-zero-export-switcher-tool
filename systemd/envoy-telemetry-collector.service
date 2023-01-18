@@ -1,0 +1,14 @@
+[Unit]
+Description=Enphase Envoy Telemetry Collector
+Documentation=https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash telemetry/envoy-telemetry-collector.sh
+WorkingDirectory=%h/.zest
+Restart=always
+RestartSec=1
+StartLimitInterval=0
