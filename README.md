@@ -214,3 +214,7 @@ Or peform the above systemd service installation with `./scripts/install --telem
 Telemetry will be collected to `~/envoy.csv`. Note that this collects instantaneous power readings (W), so the data cannot accurately be used to calculate energy (Wh).
 
 To graph recent telemetry, install [gnuplot](http://www.gnuplot.info/) and see the comments at the top of the [gnuplot script](telemetry/envoy.gnuplot) for its usage.
+
+Example:
+
+![](doc/images/gnuplot-good-day.svg)
