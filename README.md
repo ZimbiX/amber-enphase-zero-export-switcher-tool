@@ -13,6 +13,7 @@ Example of the effect on a day where the feed-in price went negative:
 <!-- MarkdownTOC autolink=true -->
 
 - [How it works](#how-it-works)
+- [Amber referral code](#amber-referral-code)
 - [Setup](#setup)
     - [System requirements](#system-requirements)
     - [Dependencies](#dependencies)
@@ -28,7 +29,6 @@ Example of the effect on a day where the feed-in price went negative:
 
 <!-- /MarkdownTOC -->
 
-
 ## How it works
 
 Enphase devices are configured with a 'Grid Profile', which encompasses a whole lot of power parameters - including a limit of how much power you are permitted to export to the grid. As an example, I have an 8.2kW solar system, but in my area, the power distribution company (responsible for the power poles and wires), Jemena, impose a 5kW export limit. What this means is that even if there is enough sunshine to generate the full 8.2kW, if the power consumption of my home is not high enough, the system limits its generation capacity so that it never exports more than 5kW to the grid. It is this capability that can be utilised, to set the grid export limit to 0.
@@ -38,6 +38,12 @@ With such an amount of energy 'going to waste', I could be better off to buy a b
 The Envoy has a web server accessible on LAN, by pointing a web browser at its IP address. The homepage is not password-protected, but other pages are. Some require the homeowner credentials, and some are intended for use by the system installer. On one of the installer pages, there is a select box where you can choose the grid profile to use. Originally, I only had one grid profile available - the 5kW export limit one - but thankfully, I was able to easily get Enphase to add a 0kW export limit one. Now it is just a matter of changing the selected profile. And that can be done programmatically by this program.
 
 The program polls the Amber API for your feed-in price, and when it crosses the $0 threshold, the appropriate grid profile is applied.
+
+## Amber referral code
+
+If you're not an Amber Electric customer yet, here's my referral link: https://mates.amber.com.au/HF5AT3KH
+
+Use that to sign up, and we both get $30! 🎉
 
 ## Setup
 
