@@ -34,6 +34,7 @@ enphase_manager = Zest::Enphase::Manager.new(
   enphase_client:,
   envoy_grid_profile_name_normal_export: ENV.fetch('ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT'),
   envoy_grid_profile_name_zero_export: ENV.fetch('ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT'),
+  status_file_path: ENV.fetch('ZEST_STATUS_FILE'),
 )
 
 amber_poll_interval_seconds = Float(ENV.fetch('ZEST_AMBER_POLL_INTERVAL_SECONDS'))

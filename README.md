@@ -25,6 +25,7 @@ Example of the effect on a day where the feed-in price went negative:
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
+- [Status file](#status-file)
 - [Collect and graph power telemetry from Envoy](#collect-and-graph-power-telemetry-from-envoy)
 
 <!-- /MarkdownTOC -->
@@ -75,6 +76,7 @@ Create a file called `.env` containing the following:
 
 ```
 ZEST_LOG_LEVEL=debug
+ZEST_STATUS_FILE=.status
 
 ZEST_AMBER_TOKEN=[your token from Amber]
 ZEST_AMBER_SITE_ID=[your site ID from Amber]
@@ -204,6 +206,12 @@ To see logs:
 ```
 journalctl --user -u zest
 ```
+
+## Status file
+
+The current export limit status is written to the file path configured in `ZEST_STATUS_FILE` - the file content being either `normal` or `zero`.
+
+This is to aid displaying this information in other tools.
 
 ## Collect and graph power telemetry from Envoy
 
