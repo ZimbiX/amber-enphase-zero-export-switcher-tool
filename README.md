@@ -148,7 +148,7 @@ If you don't have a zero export grid profile selectable, contact Enphase or mayb
 
 #### Custom command to run after switching grid profile
 
-You may need to perform another action after Zest switches the Envoy's grid profile, e.g., for [compatibility with a battery, changing its reserve power level so it doesn't conflict with the Envoy's zero export limit](https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool/issues/1). For this reason, support is provided for running a custom script post-grid-profile-switch. Set the command in `ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE` in your `.env` file, e.g.:
+You may need to perform another action after Zest switches the Envoy's grid profile, e.g., for [compatibility with a battery, changing its reserve power level so it doesn't conflict with the Envoy's zero export limit](https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool/issues/1) (shutting down solar production and running the house off the battery). For this reason, support is provided for running a custom script post-grid-profile-switch. Set the command in `ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE` in your `.env` file, e.g.:
 
 ```
 ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE="/path/to/my/script.sh"
