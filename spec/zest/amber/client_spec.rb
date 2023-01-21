@@ -14,7 +14,7 @@ RSpec.describe Zest::Amber::Client do
   describe '#current_prices' do
     subject(:current_prices) { client.current_prices }
 
-    let(:response) { instance_double(HTTPX::Response, body: response_body) }
+    let(:response) { instance_double(HTTPX::Response, body: response_body, raise_for_status: nil) }
     let(:response_body) { instance_double(HTTPX::Response::Body, to_s: parsed_body.to_json) }
     let(:parsed_body) do
       [
