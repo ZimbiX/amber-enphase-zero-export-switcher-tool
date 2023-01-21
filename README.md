@@ -27,6 +27,8 @@ Example of the effect on a day where the feed-in price went negative:
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
 - [Status file](#status-file)
 - [Collect and graph power telemetry from Envoy](#collect-and-graph-power-telemetry-from-envoy)
+- [Contributing](#contributing)
+- [Development](#development)
 
 <!-- /MarkdownTOC -->
 
@@ -232,3 +234,17 @@ To graph recent telemetry, install [gnuplot](http://www.gnuplot.info/) and see t
 Example:
 
 ![](doc/images/gnuplot-good-day.svg)
+
+## Contributing
+
+This is a tiny app, but you are welcome to contribute. File an issue on GitHub if you encounter a bug. Feel free to discuss a feature prior to development by filing an issue. PRs more than welcome.
+
+## Development
+
+Once you've followed the setup instructions, to run the tests:
+
+```bash
+bundle exec rspec -fd
+```
+
+To debug HTTP issues, [set the `HTTPX_DEBUG` environment variable](https://honeyryderchuck.gitlab.io/httpx/wiki/Debugging).
