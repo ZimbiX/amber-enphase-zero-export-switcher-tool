@@ -22,6 +22,7 @@ Example of the effect on a day where the feed-in price went negative:
         - [Amber site ID](#amber-site-id)
         - [Envoy installer password](#envoy-installer-password)
         - [Grid profile names](#grid-profile-names)
+        - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
@@ -79,6 +80,7 @@ Create a file called `.env` containing the following:
 ```
 ZEST_LOG_LEVEL=debug
 ZEST_STATUS_FILE=.status
+ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE=
 
 ZEST_AMBER_TOKEN=[your token from Amber]
 ZEST_AMBER_SITE_ID=[your site ID from Amber]
@@ -143,6 +145,18 @@ Some HTML code will appear, with one line highlighted, e.g.:
 Double-click on the profile name that's next to `id=` and copy it, e.g. `select2-profile_select-result-t33g-AS/NZS 4777.2: 2020 Australia A Region  5 kW Export Limit:1.2.2`. Trim `select2-profile_select-result-t33g-` or similar from the start, and you now have your real profile name, e.g. `AS/NZS 4777.2: 2020 Australia A Region  5 kW Export Limit:1.2.2`.
 
 If you don't have a zero export grid profile selectable, contact Enphase or maybe your installer to request that they add one for you. I sent Enphase a message, and impressively, they'd added a copy of my grid profile with zero export within an hour.
+
+#### Custom command to run after switching grid profile
+
+You may need to perform another action after Zest switches the Envoy's grid profile, e.g., for compatibility with a battery, changing its reserve power level so it doesn't conflict with the Envoy's zero export limit. For this reason, support is provided for running a custom script post-grid-profile-switch. Set the command in `ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE` in your `.env` file, e.g.:
+
+```
+ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE="/path/to/my/script.sh"
+```
+
+Your script can read the [status file](#status-file) to see what mode the Envoy's export limit is now set to.
+
+Note that the command is run synchronously - Zest will not continue until your script finishes.
 
 ## Run the program
 
