@@ -20,6 +20,7 @@ Example of the effect on a day where the feed-in price went negative:
     - [Configuration](#configuration)
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
+        - [Envoy sessionId cookie](#envoy-sessionid-cookie)
         - [Envoy installer password](#envoy-installer-password)
         - [Grid profile names](#grid-profile-names)
         - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
@@ -87,6 +88,7 @@ ZEST_AMBER_SITE_ID=[your site ID from Amber]
 ZEST_AMBER_POLL_INTERVAL_SECONDS=5
 
 ZEST_ENPHASE_ENVOY_IP=[IP address of your Envoy]
+ZEST_ENPHASE_ENVOY_SESSION_ID=[value of your Envoy sessionId cookie]
 ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
@@ -108,6 +110,17 @@ To find your Amber site ID:
 - Click 'Try it out'
 - Click 'Execute'
 - Under the 'Server Response' heading, you should now see a response body containing an ID field. Note that this is distinct from the example response body just below
+
+#### Envoy sessionId cookie
+
+- In Google Chrome, browse to: `https://your-envoy-ip`
+- Log in with your Enphase account
+- Open Google Chrome's inspector (right-click in the page -> Inspect)
+- Application tab
+- In the left menu, click the IP inside the 'Cookies' item
+- Double-click the value for the `sessionId` cookie and copy it
+
+TODO: Find out if this ever expires
 
 #### Envoy installer password
 

@@ -7,7 +7,11 @@ cd "$(dirname "$0")"
 source ../.env
 
 collect-current-readings() {
-  curl -s "http://$ZEST_ENPHASE_ENVOY_IP/production.json?details=1" \
+  curl \
+    --silent \
+    --insecure \
+    --cookie "sessionId=$ZEST_ENPHASE_ENVOY_SESSION_ID" \
+    "https://$ZEST_ENPHASE_ENVOY_IP/production.json?details=1" \
     | ruby -r json -r time -e "
         hash = JSON.parse(STDIN.read)
 

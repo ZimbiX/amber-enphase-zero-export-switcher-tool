@@ -33,6 +33,7 @@ module Zest
             .plugin(:digest_authentication)
             .digest_auth(envoy_installer_username, envoy_installer_password)
             .plugin(:persistent)
+            .with(ssl: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
       end
 
       def set_grid_profile_url
@@ -44,7 +45,7 @@ module Zest
       end
 
       def base_url
-        "http://#{envoy_ip}"
+        "https://#{envoy_ip}"
       end
     end
   end
