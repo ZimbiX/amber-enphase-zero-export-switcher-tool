@@ -10,7 +10,7 @@ collect-current-readings() {
   curl \
     --silent \
     --insecure \
-    --cookie "sessionId=$ZEST_ENPHASE_ENVOY_SESSION_ID" \
+    -H "Authorization: Bearer $ZEST_ENPHASE_ENVOY_ACCESS_TOKEN" \
     "https://$ZEST_ENPHASE_ENVOY_IP/production.json?details=1" \
     | ruby -r json -r time -e "
         hash = JSON.parse(STDIN.read)

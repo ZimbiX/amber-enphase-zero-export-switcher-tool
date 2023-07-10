@@ -20,7 +20,7 @@ Example of the effect on a day where the feed-in price went negative:
     - [Configuration](#configuration)
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
-        - [Envoy sessionId cookie](#envoy-sessionid-cookie)
+        - [Envoy access token](#envoy-access-token)
         - [Envoy installer password](#envoy-installer-password)
         - [Grid profile names](#grid-profile-names)
         - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
@@ -111,16 +111,12 @@ To find your Amber site ID:
 - Click 'Execute'
 - Under the 'Server Response' heading, you should now see a response body containing an ID field. Note that this is distinct from the example response body just below
 
-#### Envoy sessionId cookie
+#### Envoy access token
 
-- In Google Chrome, browse to: `https://your-envoy-ip`
-- Log in with your Enphase account
-- Open Google Chrome's inspector (right-click in the page -> Inspect)
-- Application tab
-- In the left menu, click the IP inside the 'Cookies' item
-- Double-click the value for the `sessionId` cookie and copy it
-
-TODO: Find out if this ever expires
+- Browse to: https://entrez.enphaseenergy.com
+- Log in with your Enphase credentials
+- In the 'Create access token' form, search for your system by typing at least three characters of your system name into the 'Select System' field. I imagine this corresponds to the name in Enlighten shown at: Menu -> System -> Site Details. In my case the system name was 'Brendan Weibrecht'
+- Click the suggestion in the dropdown: '[site name] - [site ID]'
 
 #### Envoy installer password
 
