@@ -14,8 +14,8 @@ module Zest
 
           def httpx_add_auth(httpx)
             httpx
-              .plugin(:authentication)
-              .authentication("Bearer #{token_manager.token}")
+              .plugin(:auth)
+              .bearer_auth(token_manager.token)
           end
 
           private

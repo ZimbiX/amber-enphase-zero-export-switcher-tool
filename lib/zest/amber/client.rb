@@ -47,8 +47,8 @@ module Zest
         @http ||=
           HTTPX
             .with_headers('Accept' => 'application/json')
-            .plugin(:authentication)
-            .authentication("Bearer #{token}")
+            .plugin(:auth)
+            .bearer_auth(token)
             .plugin(:persistent)
       end
 

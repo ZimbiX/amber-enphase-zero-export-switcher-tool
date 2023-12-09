@@ -1,9 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.1)
+    addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    amazing_print (1.4.0)
+    amazing_print (1.5.0)
     byebug (11.1.3)
     coderay (1.1.3)
     coolline (0.5.0)
@@ -12,12 +12,11 @@ GEM
       rexml
     diff-lcs (1.5.0)
     dotenv (2.8.1)
-    green_log (0.2.0)
-      values (~> 1.8)
+    green_log (1.0.0)
     hashdiff (1.0.1)
-    http-2-next (0.5.1)
-    httpx (0.22.2)
-      http-2-next (>= 0.4.1)
+    http-2-next (1.0.1)
+    httpx (1.1.5)
+      http-2-next (>= 1.0.1)
     jazz_fingers (6.2.0)
       amazing_print (~> 1.3)
       pry (~> 0.10)
@@ -25,10 +24,9 @@ GEM
       pry-coolline (~> 0.2)
     jwt (2.7.1)
     method_source (1.0.0)
-    net-http-digest_auth (1.4.1)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-byebug (3.10.1)
@@ -37,25 +35,24 @@ GEM
     pry-coolline (0.2.6)
       coolline (~> 0.5)
       pry (~> 0.13)
-    public_suffix (5.0.1)
+    public_suffix (5.0.4)
     racc (1.7.3)
-    rexml (3.2.5)
+    rexml (3.2.6)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.1)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     unicode_utils (1.4.0)
-    values (1.8.0)
-    webmock (3.18.1)
+    webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -69,7 +66,6 @@ DEPENDENCIES
   httpx
   jazz_fingers
   jwt
-  net-http-digest_auth
   nokogiri
   rspec
   webmock
