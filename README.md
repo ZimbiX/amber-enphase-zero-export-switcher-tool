@@ -20,10 +20,11 @@ Example of the effect on a day where the feed-in price went negative:
     - [Configuration](#configuration)
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
-        - [Envoy access token](#envoy-access-token)
-        - [Envoy installer password](#envoy-installer-password)
+        - [Installer access on Envoy firmware V5 - Envoy installer password](#installer-access-on-envoy-firmware-v5---envoy-installer-password)
+        - [Installer access on Envoy firmware V7 - Enlighten self-installer account](#installer-access-on-envoy-firmware-v7---enlighten-self-installer-account)
         - [Grid profile names](#grid-profile-names)
         - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
+        - [Envoy access token \(for telemetry\)](#envoy-access-token-for-telemetry)
 - [Run the program](#run-the-program)
 - [Screenshots](#screenshots)
 - [Install on Linux as a systemd service](#install-on-linux-as-a-systemd-service)
@@ -59,7 +60,8 @@ This may work with different Enphase systems, but here's what I have:
 - Gateway
     + Enphase Envoy-S-Metered-EU
         * SKU: ENV-S-WM-230
-        * **Software version: D5.0.55 (4f2662)**
+        * **Software version: D7.6.175 (f79c8d)**
+        * **Software version: D5.0.55 (4f2662)** (prior to 2023-07-07)
 - Microinverters
     + Enphase IQ7A
         * SKU: IQ7A-72-2-INT
@@ -88,11 +90,23 @@ ZEST_AMBER_SITE_ID=[your site ID from Amber]
 ZEST_AMBER_POLL_INTERVAL_SECONDS=5
 
 ZEST_ENPHASE_ENVOY_IP=[IP address of your Envoy]
-ZEST_ENPHASE_ENVOY_SESSION_ID=[value of your Envoy sessionId cookie]
+
+ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION=7
+
+# For firmware v5:
 ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
+
+# For firmware v7:
+ZEST_ENPHASE_ENVOY_SERIAL=[serial of your Envoy]
+ZEST_ENPHASE_ENLIGHTEN_USERNAME=[your username for Enlighten with self-installer permission]
+ZEST_ENPHASE_ENLIGHTEN_PASSWORD=[your password for Enlighten with self-installer permission]
+
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT="[your zero-export grid profile name]"
+
+# For telemetry on firmware v7:
+ZEST_ENPHASE_ENVOY_ACCESS_TOKEN=[a user token]
 ```
 
 #### Amber token
@@ -111,16 +125,9 @@ To find your Amber site ID:
 - Click 'Execute'
 - Under the 'Server Response' heading, you should now see a response body containing an ID field. Note that this is distinct from the example response body just below
 
-#### Envoy access token
+#### Installer access on Envoy firmware V5 - Envoy installer password
 
-- Browse to: https://entrez.enphaseenergy.com
-- Log in with your Enphase credentials
-- In the 'Create access token' form, search for your system by typing at least three characters of your system name into the 'Select System' field. I imagine this corresponds to the name in Enlighten shown at: Menu -> System -> Site Details. In my case the system name was 'Brendan Weibrecht'
-- Click the suggestion in the dropdown: '[site name] - [site ID]'
-- Select the gateway from its now-populated dropdown
-- Click 'Create access token'
-
-#### Envoy installer password
+On Envoy firmware V5, installer access is simple to acquire.
 
 The default installer password can be algorithmically generated from the Envoy's serial number. I am very grateful for the prior work done by others to figure this out. To generate it, there are a few options:
 
@@ -128,9 +135,15 @@ The default installer password can be algorithmically generated from the Envoy's
 - [A Python script by Markus Fritze](https://github.com/sarnau/EnphaseEnergy)
 - [A webpage by Tristan Mott](https://blahnana.com/passwordcalc.html) (easiest)
 
-[Apparently, firmware version 7 replaces this method of authentication](https://support.enphase.com/s/question/0D53m00006ySLuRCAW/unimpressed-with-loss-of-local-api-connectivity-to-envoys?t=1672164431932) with a [token that has to be refreshed through a UI](https://enphase.com/download/iq-gateway-access-using-token-tech-brief) every six months. I haven't read much of the thread, but it sounds like you also lose access to realtime telemetry by upgrading, so I'll be trying to avoid that.
-
 Not that you need it for our configuration, but FYI, the credentials for the homeowner pages are: `envoy` / \[the last six digits of the Envoy serial... which is displayed on the unauthenticated homepage\]
+
+#### Installer access on Envoy firmware V7 - Enlighten self-installer account
+
+On Envoy firmware V7, installer access requires intervention from Enphase.
+
+[Firmware version 7 changes the method of authentication](https://support.enphase.com/s/question/0D53m00006ySLuRCAW/unimpressed-with-loss-of-local-api-connectivity-to-envoys?t=1672164431932) to using a [token that has to be refreshed through a UI](https://enphase.com/download/iq-gateway-access-using-token-tech-brief). A user token lasts six months, and an installer token lasts 12 hours. Zest automates acquiring and refreshing an installer token.
+
+You'll need to email Enphase support and ask that DIY installer access be added to your account.
 
 #### Grid profile names
 
@@ -168,6 +181,15 @@ ZEST_COMMAND_TO_RUN_AFTER_SWITCHING_GRID_PROFILE="/path/to/my/script.sh"
 Your script can read the [status file](#status-file) to see what mode the Envoy's export limit is now set to.
 
 Note that the command is run synchronously - Zest will not continue until your script finishes.
+
+#### Envoy access token (for telemetry)
+
+- Browse to: https://entrez.enphaseenergy.com
+- Log in with your Enphase credentials
+- In the 'Create access token' form, search for your system by typing at least three characters of your system name into the 'Select System' field. I imagine this corresponds to the name in Enlighten shown at: Menu -> System -> Site Details. In my case the system name was 'Brendan Weibrecht'
+- Click the suggestion in the dropdown: '[site name] - [site ID]'
+- Select the gateway from its now-populated dropdown
+- Click 'Create access token'
 
 ## Run the program
 

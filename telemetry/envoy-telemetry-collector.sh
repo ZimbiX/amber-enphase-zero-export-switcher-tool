@@ -6,12 +6,20 @@ cd "$(dirname "$0")"
 
 source ../.env
 
+if [[ $ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION == 5 ]]; then
+  http_scheme=http
+  auth_args=()
+elif [[ $ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION == 7 ]]; then
+  http_scheme=https
+  auth_args=(-H "Authorization: Bearer $ZEST_ENPHASE_ENVOY_ACCESS_TOKEN")
+fi
+
 collect-current-readings() {
   curl \
     --silent \
     --insecure \
-    -H "Authorization: Bearer $ZEST_ENPHASE_ENVOY_ACCESS_TOKEN" \
-    "https://$ZEST_ENPHASE_ENVOY_IP/production.json?details=1" \
+    "${auth_args[@]}" \
+    "$http_scheme://$ZEST_ENPHASE_ENVOY_IP/production.json?details=1" \
     | ruby -r json -r time -e "
         hash = JSON.parse(STDIN.read)
 

@@ -23,8 +23,11 @@ GEM
       pry (~> 0.10)
       pry-byebug (~> 3.9)
       pry-coolline (~> 0.2)
+    jwt (2.7.1)
     method_source (1.0.0)
     net-http-digest_auth (1.4.1)
+    nokogiri (1.15.5-x86_64-linux)
+      racc (~> 1.4)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -35,6 +38,7 @@ GEM
       coolline (~> 0.5)
       pry (~> 0.13)
     public_suffix (5.0.1)
+    racc (1.7.3)
     rexml (3.2.5)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -64,7 +68,9 @@ DEPENDENCIES
   green_log
   httpx
   jazz_fingers
+  jwt
   net-http-digest_auth
+  nokogiri
   rspec
   webmock
 

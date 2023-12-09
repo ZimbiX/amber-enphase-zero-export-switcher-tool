@@ -7,7 +7,9 @@ source "https://rubygems.org"
 gem 'dotenv'
 gem 'green_log'
 gem 'httpx'
+gem 'jwt'
 gem 'net-http-digest_auth'
+gem 'nokogiri'
 
 group :development do
   gem 'jazz_fingers'

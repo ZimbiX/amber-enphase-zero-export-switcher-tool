@@ -11,10 +11,35 @@ require 'green_log'
 require 'zest/amber/client'
 require 'zest/enphase/client'
 require 'zest/enphase/manager'
+require 'zest/enphase/installer_auth/firmware_v5/credentials_auth'
+require 'zest/enphase/installer_auth/firmware_v7/token_auth'
+require 'zest/enphase/installer_auth/firmware_v7/token_manager'
 
 logger = GreenLog::Logger.build(severity_threshold: ENV.fetch('ZEST_LOG_LEVEL'))
 
 STDOUT.sync = true
+
+enphase_auth =
+  case ENV.fetch('ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION')
+  when '5'
+    Zest::Enphase::InstallerAuth::FirmwareV5::CredentialsAuth.new(
+      envoy_installer_username: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME'),
+      envoy_installer_password: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD'),
+    )
+  when '7'
+    token_manager = Zest::Enphase::InstallerAuth::FirmwareV7::TokenManager.new(
+      logger:,
+      enlighten_username: ENV.fetch('ZEST_ENPHASE_ENLIGHTEN_USERNAME'),
+      enlighten_password: ENV.fetch('ZEST_ENPHASE_ENLIGHTEN_PASSWORD'),
+      envoy_serial: ENV.fetch('ZEST_ENPHASE_ENVOY_SERIAL'),
+    )
+    Zest::Enphase::InstallerAuth::FirmwareV7::TokenAuth.new(
+      logger:,
+      token_manager:,
+    )
+  else
+    raise 'Invalid ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION: Must be 5 or 7'
+  end
 
 amber_client = Zest::Amber::Client.new(
   logger:,
@@ -24,9 +49,8 @@ amber_client = Zest::Amber::Client.new(
 
 enphase_client = Zest::Enphase::Client.new(
   logger:,
+  enphase_auth:,
   envoy_ip: ENV.fetch('ZEST_ENPHASE_ENVOY_IP'),
-  envoy_installer_username: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME'),
-  envoy_installer_password: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD'),
 )
 
 enphase_manager = Zest::Enphase::Manager.new(

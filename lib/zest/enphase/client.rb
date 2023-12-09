@@ -5,11 +5,10 @@ require 'httpx'
 module Zest
   module Enphase
     class Client
-      def initialize(logger:, envoy_ip:, envoy_installer_username:, envoy_installer_password:)
+      def initialize(logger:, enphase_auth:, envoy_ip:)
         @logger = logger
+        @enphase_auth = enphase_auth
         @envoy_ip = envoy_ip
-        @envoy_installer_username = envoy_installer_username
-        @envoy_installer_password = envoy_installer_password
       end
 
       def set_current_grid_profile(name:)
@@ -24,16 +23,13 @@ module Zest
 
       private
 
-      attr_reader :logger, :envoy_ip, :envoy_installer_username, :envoy_installer_password
+      attr_reader :logger, :enphase_auth, :envoy_ip
 
       def http
-        @http ||=
-          HTTPX
-            .with_headers('Accept' => 'application/json')
-            .plugin(:digest_authentication)
-            .digest_auth(envoy_installer_username, envoy_installer_password)
-            .plugin(:persistent)
-            .with(ssl: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
+        HTTPX
+          .with_headers('Accept' => 'application/json')
+          .then(&enphase_auth.method(:httpx_add_auth))
+          .with(ssl: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
       end
 
       def set_grid_profile_url
