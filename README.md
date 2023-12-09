@@ -117,6 +117,8 @@ To find your Amber site ID:
 - Log in with your Enphase credentials
 - In the 'Create access token' form, search for your system by typing at least three characters of your system name into the 'Select System' field. I imagine this corresponds to the name in Enlighten shown at: Menu -> System -> Site Details. In my case the system name was 'Brendan Weibrecht'
 - Click the suggestion in the dropdown: '[site name] - [site ID]'
+- Select the gateway from its now-populated dropdown
+- Click 'Create access token'
 
 #### Envoy installer password
 
