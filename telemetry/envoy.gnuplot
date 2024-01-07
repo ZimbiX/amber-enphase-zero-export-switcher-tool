@@ -68,4 +68,4 @@ plot "<tail -".LinesCount." ".InputFile." | awk '$1~/eim/'              " using 
    , "<tail -".LinesCount." ".InputFile." | awk '$1~/net-consumption/'  " using 2:3 title 'Consumption (net)' with lines \
    # , "<tail -".LinesCount." ".InputFile." | awk '$1~/voltage/'          " using 2:3 title 'Voltage' axis x1y2 with lines \
 
-if (Format eq "qt") pause 3; reread
+while (Format eq "qt") { pause 3; replot }
