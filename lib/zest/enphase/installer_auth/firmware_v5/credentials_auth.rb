@@ -15,7 +15,7 @@ module Zest
 
           def httpx_add_auth(httpx)
             httpx
-              .plugin(:digest_authentication)
+              .plugin(:digest_auth)
               .digest_auth(envoy_installer_username, envoy_installer_password)
           end
 

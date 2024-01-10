@@ -23,6 +23,7 @@ enphase_auth =
   case ENV.fetch('ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION')
   when '5'
     Zest::Enphase::InstallerAuth::FirmwareV5::CredentialsAuth.new(
+      logger:,
       envoy_installer_username: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME'),
       envoy_installer_password: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD'),
     )
