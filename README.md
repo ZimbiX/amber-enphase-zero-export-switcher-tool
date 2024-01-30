@@ -20,7 +20,7 @@ Example of the effect on a day where the feed-in price went negative:
     - [Configuration](#configuration)
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
-        - [Installer access on Envoy firmware V5 - Envoy installer password](#installer-access-on-envoy-firmware-v5---envoy-installer-password)
+        - [Installer access on Envoy firmware V4/V5 - Envoy installer password](#installer-access-on-envoy-firmware-v4v5---envoy-installer-password)
         - [Installer access on Envoy firmware V7 - Enlighten self-installer account](#installer-access-on-envoy-firmware-v7---enlighten-self-installer-account)
         - [Grid profile names](#grid-profile-names)
         - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
@@ -69,6 +69,8 @@ This may work with different Enphase systems, but here's what I have:
     + Connected to the local network
     + Running during daylight hours at least
 
+It's also reportedly working on **Software version: R4.10.35 (6ed292)**.
+
 ### Dependencies
 
 - [Install Ruby](https://www.ruby-lang.org/en/downloads/) (needs 3.1+)
@@ -93,7 +95,7 @@ ZEST_ENPHASE_ENVOY_IP=[IP address of your Envoy]
 
 ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION=7
 
-# For firmware v5:
+# For firmware v4/v5:
 ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
 
@@ -125,9 +127,9 @@ To find your Amber site ID:
 - Click 'Execute'
 - Under the 'Server Response' heading, you should now see a response body containing an ID field. Note that this is distinct from the example response body just below
 
-#### Installer access on Envoy firmware V5 - Envoy installer password
+#### Installer access on Envoy firmware V4/V5 - Envoy installer password
 
-On Envoy firmware V5, installer access is simple to acquire.
+On Envoy firmware V4/V5, installer access is simple to acquire.
 
 The default installer password can be algorithmically generated from the Envoy's serial number. I am very grateful for the prior work done by others to figure this out. To generate it, there are a few options:
 

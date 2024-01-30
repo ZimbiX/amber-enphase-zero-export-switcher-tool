@@ -5,7 +5,7 @@ require 'httpx'
 module Zest
   module Enphase
     module InstallerAuth
-      module FirmwareV5
+      module FirmwareV5 # Also reportedly works on V4
         class CredentialsAuth
           def initialize(logger:, envoy_installer_username:, envoy_installer_password:)
             @logger = logger
