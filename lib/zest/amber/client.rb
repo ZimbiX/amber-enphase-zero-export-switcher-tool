@@ -49,7 +49,7 @@ module Zest
             .with_headers('Accept' => 'application/json')
             .plugin(:auth)
             .bearer_auth(token)
-            .plugin(:persistent)
+            #.plugin(:persistent)
       end
 
       def site_url
