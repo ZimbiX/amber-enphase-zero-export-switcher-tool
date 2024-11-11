@@ -8,17 +8,17 @@ set -x
 
 [[ -d ~/.zest ]] || ln -s "$PWD" ~/.zest
 
-mkdir -p ~/.config/systemd/user/
-
 install-service() {
   local service_name
   service_name="$1"
 
-  cp -f "systemd/$service_name.service" ~/.config/systemd/user/
+  sudo cp -f "systemd/$service_name.service" /usr/lib/systemd/system/
+  sudo sed -E -i "/usr/lib/systemd/system/$service_name.service" -e "s/__USER__/$USER/g" -e "s/__GROUP__/$USER/g" -e "s=__HOME__=$HOME=g"
 
-  systemctl enable --user "$service_name"
-  systemctl restart --user "$service_name"
-  systemctl status --user "$service_name" --no-pager
+  sudo systemctl daemon-reload
+  sudo systemctl enable "$service_name"
+  sudo systemctl restart "$service_name"
+  sudo systemctl status "$service_name" --no-pager
 }
 
 install-service zest
