@@ -5,10 +5,10 @@ require 'httpx'
 module Zest
   module Enphase
     class Client
-      def initialize(logger:, enphase_auth:, envoy_ip:)
+      def initialize(logger:, enphase_auth:, envoy_base_url:)
         @logger = logger
         @enphase_auth = enphase_auth
-        @envoy_ip = envoy_ip
+        @envoy_base_url = envoy_base_url
       end
 
       def set_current_grid_profile(name:)
@@ -23,7 +23,7 @@ module Zest
 
       private
 
-      attr_reader :logger, :enphase_auth, :envoy_ip
+      attr_reader :logger, :enphase_auth, :envoy_base_url
 
       def http
         HTTPX
@@ -33,15 +33,11 @@ module Zest
       end
 
       def set_grid_profile_url
-        "#{base_url}/installer/agf/set_profile.json"
+        "#{envoy_base_url}/installer/agf/set_profile.json"
       end
 
       def installer_home_url
-        "#{base_url}/installer/setup/home"
-      end
-
-      def base_url
-        "https://#{envoy_ip}"
+        "#{envoy_base_url}/installer/setup/home"
       end
     end
   end

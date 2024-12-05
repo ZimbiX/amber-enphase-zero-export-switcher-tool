@@ -39,7 +39,7 @@ enphase_auth =
       token_manager:,
     )
   else
-    raise 'Invalid ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION: Must be 5 or 7'
+    raise 'Invalid ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION: Must be 4, 5, or 7'
   end
 
 amber_client = Zest::Amber::Client.new(
@@ -48,10 +48,12 @@ amber_client = Zest::Amber::Client.new(
   token: ENV.fetch('ZEST_AMBER_TOKEN'),
 )
 
+envoy_ip = ENV.fetch('ZEST_ENPHASE_ENVOY_IP')
+envoy_http_scheme = ENV.fetch('ZEST_ENPHASE_ENVOY_USE_HTTPS') == 'true' ? 'https' : 'http'
 enphase_client = Zest::Enphase::Client.new(
   logger:,
   enphase_auth:,
-  envoy_ip: ENV.fetch('ZEST_ENPHASE_ENVOY_IP'),
+  envoy_base_url: "#{envoy_http_scheme}://#{envoy_ip}",
 )
 
 enphase_manager = Zest::Enphase::Manager.new(

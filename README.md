@@ -80,7 +80,7 @@ It's also reportedly working on **Software version: R4.10.35 (6ed292)**.
 
 ### Configuration
 
-Create a file called `.env` containing the following:
+Create a file called `.env` containing the following, deleting the section for the wrong firmware version:
 
 ```
 ZEST_LOG_LEVEL=debug
@@ -98,11 +98,13 @@ ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION=7
 # For firmware v4/v5:
 ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
+ZEST_ENPHASE_ENVOY_USE_HTTPS=false
 
 # For firmware v7:
 ZEST_ENPHASE_ENVOY_SERIAL=[serial of your Envoy]
 ZEST_ENPHASE_ENLIGHTEN_USERNAME=[your username for Enlighten with self-installer permission]
 ZEST_ENPHASE_ENLIGHTEN_PASSWORD=[your password for Enlighten with self-installer permission]
+ZEST_ENPHASE_ENVOY_USE_HTTPS=true
 
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT="[your zero-export grid profile name]"
