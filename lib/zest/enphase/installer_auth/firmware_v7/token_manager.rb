@@ -2,6 +2,7 @@
 
 require 'httpx'
 require 'jwt'
+require 'nokogiri'
 
 # Manages the token-based authentication used by an Envoy on firmware v7
 
