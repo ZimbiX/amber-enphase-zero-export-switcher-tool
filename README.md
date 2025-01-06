@@ -21,7 +21,7 @@ Example of the effect on a day where the feed-in price went negative:
         - [Amber token](#amber-token)
         - [Amber site ID](#amber-site-id)
         - [Installer access on Envoy firmware V4/V5 - Envoy installer password](#installer-access-on-envoy-firmware-v4v5---envoy-installer-password)
-        - [Installer access on Envoy firmware V7 - Enlighten self-installer account](#installer-access-on-envoy-firmware-v7---enlighten-self-installer-account)
+        - [Installer access on Envoy firmware V7+ - Enlighten self-installer account](#installer-access-on-envoy-firmware-v7---enlighten-self-installer-account)
         - [Grid profile names](#grid-profile-names)
         - [Custom command to run after switching grid profile](#custom-command-to-run-after-switching-grid-profile)
         - [Envoy access token \(for telemetry\)](#envoy-access-token-for-telemetry)
@@ -103,7 +103,7 @@ ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME=installer
 ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD=[your installer password]
 ZEST_ENPHASE_ENVOY_USE_HTTPS=false
 
-# For firmware v7:
+# For firmware v7+:
 ZEST_ENPHASE_ENVOY_SERIAL=[serial of your Envoy]
 ZEST_ENPHASE_ENLIGHTEN_USERNAME=[your username for Enlighten with self-installer permission]
 ZEST_ENPHASE_ENLIGHTEN_PASSWORD=[your password for Enlighten with self-installer permission]
@@ -112,7 +112,7 @@ ZEST_ENPHASE_ENVOY_USE_HTTPS=true
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT="[your zero-export grid profile name]"
 
-# For telemetry on firmware v7:
+# For telemetry on firmware v7+:
 ZEST_ENPHASE_ENVOY_ACCESS_TOKEN=[a user token]
 ```
 
@@ -144,9 +144,9 @@ The default installer password can be algorithmically generated from the Envoy's
 
 Not that you need it for our configuration, but FYI, the credentials for the homeowner pages are: `envoy` / \[the last six digits of the Envoy serial... which is displayed on the unauthenticated homepage\]
 
-#### Installer access on Envoy firmware V7 - Enlighten self-installer account
+#### Installer access on Envoy firmware V7+ - Enlighten self-installer account
 
-On Envoy firmware V7, installer access requires intervention from Enphase.
+On Envoy firmware V7+, installer access requires intervention from Enphase.
 
 [Firmware version 7 changes the method of authentication](https://support.enphase.com/s/question/0D53m00006ySLuRCAW/unimpressed-with-loss-of-local-api-connectivity-to-envoys?t=1672164431932) to using a [token that has to be refreshed through a UI](https://enphase.com/download/iq-gateway-access-using-token-tech-brief). A user token lasts six months, and an installer token lasts 12 hours. Zest automates acquiring and refreshing an installer token.
 
@@ -270,6 +270,8 @@ The current export limit status is written to the file path configured in `ZEST_
 This is to aid displaying this information in other tools.
 
 ## Collect and graph power telemetry from Envoy
+
+*This telemetry script is currently not working very well - with an installer account, issued tokens are much shorter-lived, and I've not yet implemented token refresh here*
 
 I should get Home Assistant and Grafana set up at some point, but I've been using a gnuplot-based system for a while and thought I might as well share it.
 
