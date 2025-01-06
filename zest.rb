@@ -27,7 +27,7 @@ enphase_auth =
       envoy_installer_username: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_USERNAME'),
       envoy_installer_password: ENV.fetch('ZEST_ENPHASE_ENVOY_INSTALLER_PASSWORD'),
     )
-  when '7'
+  when '7', '8'
     token_manager = Zest::Enphase::InstallerAuth::FirmwareV7::TokenManager.new(
       logger:,
       enlighten_username: ENV.fetch('ZEST_ENPHASE_ENLIGHTEN_USERNAME'),
@@ -39,7 +39,7 @@ enphase_auth =
       token_manager:,
     )
   else
-    raise 'Invalid ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION: Must be 4, 5, or 7'
+    raise 'Invalid ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION: Must be one of: 4, 5, 7, 8'
   end
 
 amber_client = Zest::Amber::Client.new(

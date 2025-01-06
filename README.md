@@ -69,7 +69,10 @@ This may work with different Enphase systems, but here's what I have:
     + Connected to the local network
     + Running during daylight hours at least
 
-It's also reportedly working on **Software version: R4.10.35 (6ed292)**.
+It's also reportedly working on:
+
+- **Software version: D8.2.127 (b9a901)**
+- **Software version: R4.10.35 (6ed292)**
 
 ### Dependencies
 
