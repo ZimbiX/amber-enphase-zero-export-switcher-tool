@@ -64,13 +64,22 @@ module Zest
             token_page_response.raise_for_status
 
             document = Nokogiri::HTML(token_page_response.body.to_s)
-            @token = document.at('#JWTToken').text.tap do
-              logger.info('Enphase token refreshed')
-            end
+            @token = document.at('#JWTToken').text
+            logger.info('Enphase token refreshed')
+            write_token_to_file
+            @token
           end
 
           def http
             @http ||= HTTPX.plugin(:cookies)
+          end
+
+          def write_token_to_file
+            File.write(token_file_path, @token)
+          end
+
+          def token_file_path
+            '.enphase_token'
           end
 
           attr_reader :logger, :enlighten_username, :enlighten_password, :envoy_serial

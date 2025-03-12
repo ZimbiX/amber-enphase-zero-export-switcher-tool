@@ -11,7 +11,11 @@ if [[ $ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION == 5 ]]; then
   auth_args=()
 elif [[ $ZEST_ENPHASE_ENVOY_FIRMWARE_VERSION == 7 ]]; then
   http_scheme=https
-  auth_args=(-H "Authorization: Bearer $ZEST_ENPHASE_ENVOY_ACCESS_TOKEN")
+  enphase_token="${ZEST_ENPHASE_ENVOY_ACCESS_TOKEN-}"
+  if [[ -z "$enphase_token" ]]; then
+    enphase_token="$(cat ../.enphase_token)"
+  fi
+  auth_args=(-H "Authorization: Bearer $enphase_token")
 fi
 
 collect-current-readings() {

@@ -111,9 +111,6 @@ ZEST_ENPHASE_ENVOY_USE_HTTPS=true
 
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_NORMAL_EXPORT="[your normal grid profile name]"
 ZEST_ENPHASE_ENVOY_GRID_PROFILE_NAME_ZERO_EXPORT="[your zero-export grid profile name]"
-
-# For telemetry on firmware v7+:
-ZEST_ENPHASE_ENVOY_ACCESS_TOKEN=[a user token]
 ```
 
 #### Amber token
@@ -271,7 +268,7 @@ This is to aid displaying this information in other tools.
 
 ## Collect and graph power telemetry from Envoy
 
-*This telemetry script is currently not working very well - with an installer account, issued tokens are much shorter-lived, and I've not yet implemented token refresh here*
+*Note that this telemetry script requires Zest to be running in order to continually refresh the access token. With an installer account, issued tokens are much shorter-lived, and I've not yet implemented token refresh here*
 
 I should get Home Assistant and Grafana set up at some point, but I've been using a gnuplot-based system for a while and thought I might as well share it.
 
