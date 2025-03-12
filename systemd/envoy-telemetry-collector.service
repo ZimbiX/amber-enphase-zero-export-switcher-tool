@@ -1,14 +1,18 @@
 [Unit]
 Description=Enphase Envoy Telemetry Collector
 Documentation=https://github.com/ZimbiX/amber-enphase-zero-export-switcher-tool
-
-[Install]
-WantedBy=default.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
+User=__USER__
+Group=__GROUP__
 ExecStart=/bin/bash telemetry/envoy-telemetry-collector.sh
-WorkingDirectory=%h/.zest
+WorkingDirectory=__HOME__/.zest
 Restart=always
 RestartSec=1
 StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
