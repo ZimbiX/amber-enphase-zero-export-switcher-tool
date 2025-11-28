@@ -30,6 +30,7 @@ GEM
     method_source (1.1.0)
     nokogiri (1.18.3-x86_64-linux-gnu)
       racc (~> 1.4)
+    openssl (3.3.2)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -71,6 +72,7 @@ DEPENDENCIES
   jazz_fingers
   jwt
   nokogiri
+  openssl
   rspec
   webmock
 

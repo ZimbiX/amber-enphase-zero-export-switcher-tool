@@ -9,6 +9,7 @@ gem 'green_log'
 gem 'httpx'
 gem 'jwt'
 gem 'nokogiri'
+gem 'openssl'
 
 group :development do
   gem 'jazz_fingers'
